@@ -4,7 +4,7 @@ const Login = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
-        <img src="../../src/assets/images/logo.png" alt="Login" />
+        <img src={"images/logo.png"} alt="Login" />
       </div>
 
       <form className={styles.form_container}>
