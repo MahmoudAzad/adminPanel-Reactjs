@@ -1,11 +1,15 @@
 import { useContext } from "react";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import LoginContext from "../context/LoginContext";
 
 const AuthLogin = () => {
   const loginState = useContext(LoginContext);
-  const navigate = useNavigate();
-  return <>{loginState.isLogin ? <Outlet /> : navigate("/login")}</>;
+
+  return loginState.isLogin ? (
+    <Outlet />
+  ) : (
+    <Navigate to="/login" replace={true} />
+  );
 };
 
 export default AuthLogin;
