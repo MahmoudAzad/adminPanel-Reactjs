@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route element={<AuthLogin />}>
           <Route path="/" element={<MainLayout />}>
-            <Route index element={<MainPage />} />
+            <Route path="/" element={<MainPage />} />
           </Route>
         </Route>
 
