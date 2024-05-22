@@ -33,6 +33,7 @@
     @include xl {
       margin: 70px;
     }
+
     input {
       padding: 15px;
       font-size: 15px;
@@ -48,6 +49,7 @@
         width: 90%;
       }
     }
+
     button {
       padding: 15px;
       font-size: 20px;
@@ -71,6 +73,13 @@
     }
     p {
       margin-top: 10px;
+    }
+    .errorMessage {
+      padding-top: 5px;
+      font-size: 14px;
+      font-weight: bold;
+      color: rgb(246, 66, 66);
+      opacity: 0;
     }
   }
 }
