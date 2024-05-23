@@ -1,37 +1,47 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import styles from "../../src/styles/Login.module.scss";
 import { useNavigate } from "react-router-dom";
 import LoginContext from "../components/context/LoginContext";
 
 const Login = () => {
-  const [username, setUername] = useState("mahmoud-azad");
-  const [email, setEmail] = useState("azadmilad1993@gmail.com");
-  const [password, setPassword] = useState("12345");
-  const usernameErrorRef = useRef(null);
-  const emailErrorRef = useRef(null);
-  const passwordErrorRef = useRef(null);
-
+  const [formData, setFormData] = useState({
+    username: "mahmoud-azad",
+    email: "azadmilad1993@gmail.com",
+    password: "12345",
+  });
+  const [errors, setErrors] = useState<{ [key: string]: boolean }>({});
   const loginContext = useContext(LoginContext);
   const navigate = useNavigate();
 
-  const loginHandler = (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const loginHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    let isValid;
-    username === "mahmoud-azad" &&
-      password === "12345" &&
-      email === "azadmilad1993@gmail.com";
-    if (isValid) {
+
+    const { username, email, password } = formData;
+    const validUsername = "mahmoud-azad";
+    const validEmail = "azadmilad1993@gmail.com";
+    const validPassword = "12345";
+
+    if (
+      username === validUsername &&
+      email === validEmail &&
+      password === validPassword
+    ) {
       loginContext.toggleLogin();
       navigate("/");
     } else {
-      if (username !== "mahmoud-azad") {
-        usernameErrorRef.current?.setAttribute(
-          "style",
-          "display: inline-block;opacity: 1"
-        );
-      }
+      setErrors({
+        username: username !== validUsername,
+        email: email !== validEmail,
+        password: password !== validPassword,
+      });
     }
   };
+
   return (
     <div className={styles.container}>
       <div className={styles.logo}>
@@ -44,43 +54,41 @@ const Login = () => {
         <input
           type="text"
           placeholder="username"
-          id="username"
           name="username"
-          value={username}
-          onChange={(e) => {
-            setUername(e.target.value);
-          }}
+          value={formData.username}
+          onChange={handleChange}
         />
-        <span ref={usernameErrorRef} className={styles.errorMessage}>
-          Correct username is "milad"
-        </span>
+        {errors.username && (
+          <span className={styles.errorMessage}>
+            Correct username is "mahmoud-azad"
+          </span>
+        )}
+
         <input
-          type="email"
+          type="text"
           placeholder="email"
-          id="email"
           name="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-          }}
+          value={formData.email}
+          onChange={handleChange}
         />
-        <span ref={emailErrorRef} className={styles.errorMessage}>
-          Correct email is "azadmilad1993@gmail.com"
-        </span>
+        {errors.email && (
+          <span className={styles.errorMessage}>
+            Correct email is "azadmilad1993@gmail.com"
+          </span>
+        )}
 
         <input
           type="password"
           placeholder="password"
-          id="password"
           name="password"
-          value={password}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
+          value={formData.password}
+          onChange={handleChange}
         />
-        <span ref={passwordErrorRef} className={styles.errorMessage}>
-          Correct password is "12345"
-        </span>
+        {errors.password && (
+          <span className={styles.errorMessage}>
+            Correct password is "12345"
+          </span>
+        )}
 
         <p>Forget password ?</p>
         <button type="submit">Login</button>
