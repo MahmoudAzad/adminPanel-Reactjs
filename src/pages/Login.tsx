@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import styles from "../../src/styles/Login.module.scss";
 import { useNavigate } from "react-router-dom";
-import LoginContext from "../components/context/LoginContext";
+import LoginContext from "../context/LoginContext";
 
 const Login = () => {
   const [formData, setFormData] = useState({

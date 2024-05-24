@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import LoginContext from "../context/LoginContext";
 
-const AuthLogin = () => {
+const LoginLayout = () => {
   const loginState = useContext(LoginContext);
 
   return loginState.isLogin ? (
@@ -12,4 +12,4 @@ const AuthLogin = () => {
   );
 };
 
-export default AuthLogin;
+export default LoginLayout;
