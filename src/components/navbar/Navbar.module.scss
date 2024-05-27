@@ -1,0 +1,15 @@
+@import "../../styles/variables";
+
+.navbar_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: $PaleGrayBorder;
+  padding: 15px;
+  .rightbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+}

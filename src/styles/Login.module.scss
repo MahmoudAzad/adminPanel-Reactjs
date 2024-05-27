@@ -25,7 +25,7 @@
     color: white;
     @include md {
       margin: 70px;
-      border-radius: $largeBorderRadius;
+      border-radius: $LBorderRadius;
     }
     @include lg {
       margin: 150px;
@@ -37,7 +37,7 @@
     input {
       padding: 15px;
       font-size: 15px;
-      border-radius: $mediumBorderRadius;
+      border-radius: $MBorderRadius;
       border: none;
       width: 90%;
       margin-top: 20px;
@@ -53,7 +53,7 @@
     button {
       padding: 15px;
       font-size: 20px;
-      border-radius: $mediumBorderRadius;
+      border-radius: $MBorderRadius;
       width: 90%;
       margin-top: 20px;
       border: 2px solid white;

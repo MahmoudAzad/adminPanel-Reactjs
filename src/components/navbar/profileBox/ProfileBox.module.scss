@@ -1,0 +1,12 @@
+@import "../../../styles/variables";
+
+.profileBox_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 100%;
+  height: 35px;
+  width: 35px;
+  background-color: $PaleGray;
+}

@@ -1,0 +1,8 @@
+@import "../../../styles/variables";
+
+.themeBox_container {
+  display: flex;
+  border: $PaleGrayBorder;
+  border-radius: $SBorderRadius;
+  padding: 7px;
+}

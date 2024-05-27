@@ -8,8 +8,20 @@ $xxl: 1536px;
 
 // colors
 $Purple: rgb(97, 42, 186);
+$Gray: rgb(190, 190, 190);
+$PaleGray: rgb(240, 240, 240);
+
+// border
+$GrayBorder: 1px solid rgb(190, 190, 190);
+$PaleGrayBorder: 1px solid rgb(240, 240, 240);
+$BlackBorder: 1px solid black;
 
 // border_radius
-$smallBorderRadius: 10px;
-$mediumBorderRadius: 20px;
-$largeBorderRadius: 30px;
+$SBorderRadius: 5px;
+$MBorderRadius: 10px;
+$LBorderRadius: 20px;
+$XlBorderRadius: 30px;
+
+// Shadows
+$mainBoxShadow: 0 6px 30px 5px rgba(0, 0, 0, 0.12);
+$secondBoxShadow: -3px 6px 30px 5px rgba(0, 0, 0, 0.3);

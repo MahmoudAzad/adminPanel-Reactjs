@@ -1,0 +1,14 @@
+@import "../../../styles/variables";
+
+.languageBox_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: $PaleGrayBorder;
+  padding: 5px;
+  border-radius: $SBorderRadius;
+  gap: 2px;
+  p {
+    font-size: 14px;
+  }
+}
