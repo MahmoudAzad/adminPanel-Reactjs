@@ -1,0 +1,27 @@
+@import "../../../styles/variables";
+
+.dropdown_container {
+  position: relative;
+  display: inline-block;
+
+  .dropdown_content {
+    position: absolute;
+    background-color: #ffffff;
+    border: $PaleGrayBorder;
+    border-radius: $SBorderRadius;
+    padding: 5px;
+    margin-top: 5px;
+    box-shadow: $mainBoxShadow;
+    min-width: 150px;
+    z-index: 1;
+    right: 0;
+    .item {
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: $SBorderRadius;
+      &:hover {
+        background-color: $PaleGray;
+      }
+    }
+  }
+}
