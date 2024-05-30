@@ -2,6 +2,7 @@ import { useState, useRef, useEffect, ReactNode } from "react";
 import styles from "./Dropdown.module.scss";
 
 type TContentItems = {
+  id: number;
   label: string;
   icon?: ReactNode;
 };
@@ -10,18 +11,17 @@ interface Props {
   dropdownBtn: ReactNode;
   btnClasses: string;
   contentClasses?: string;
-  setSelectedTheme: (label: string) => void;
+  setSelectedItem?: (label: string) => void;
 }
 const Dropdown: React.FC<Props> = ({
   contentItems,
   dropdownBtn,
   btnClasses,
   contentClasses,
-  setSelectedTheme,
+  setSelectedItem,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -45,7 +45,9 @@ const Dropdown: React.FC<Props> = ({
 
   const handleItemClick = (label: string) => {
     setIsOpen(false);
-    setSelectedTheme(label);
+    if (setSelectedItem) {
+      setSelectedItem(label);
+    }
   };
 
   return (
@@ -55,9 +57,9 @@ const Dropdown: React.FC<Props> = ({
       </div>
       {isOpen && (
         <div className={`${styles.dropdown_content} ${contentClasses}`}>
-          {contentItems.map((item, index) => (
+          {contentItems.map((item) => (
             <div
-              key={index}
+              key={item.id}
               className={styles.item}
               onClick={() => handleItemClick(item.label)}
             >

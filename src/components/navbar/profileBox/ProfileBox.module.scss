@@ -1,6 +1,6 @@
 @import "../../../styles/variables";
 
-.profileBox_container {
+.profileBox_button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,4 +9,5 @@
   height: 35px;
   width: 35px;
   background-color: $PaleGray;
+  cursor: pointer;
 }

@@ -1,8 +1,9 @@
 @import "../../../styles/variables";
 
-.themeBox_container {
+.themeBox_button {
   display: flex;
   border: $PaleGrayBorder;
   border-radius: $SBorderRadius;
   padding: 7px;
+  cursor: pointer;
 }
