@@ -5,8 +5,8 @@ import { useState } from "react";
 const LanguageBox = () => {
   const [selectedItems, setSelectedItem] = useState("EN");
   const items = [
-    { id: 1, label: "EN", icon: <MdLanguage size="20px" /> },
-    { id: 2, label: "FA", icon: <MdLanguage size="20px" /> },
+    { id: 1, label: "EN" },
+    { id: 2, label: "FA" },
   ];
   return (
     <Dropdown

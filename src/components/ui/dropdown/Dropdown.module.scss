@@ -6,7 +6,7 @@
 
   .dropdown_content {
     position: absolute;
-    background-color: #ffffff;
+    background-color: var(--bg_card);
     border: $PaleGrayBorder;
     border-radius: $SBorderRadius;
     padding: 5px;
@@ -16,11 +16,14 @@
     z-index: 1;
     right: 0;
     .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 5px 10px;
       cursor: pointer;
       border-radius: $SBorderRadius;
       &:hover {
-        background-color: $PaleGray;
+        background-color: var(--bg_hover);
       }
     }
   }

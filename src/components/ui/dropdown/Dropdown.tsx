@@ -70,6 +70,7 @@ const Dropdown: React.FC<Props> = ({
               onClick={() => handleItemClick(item.label)}
             >
               {item.label}
+              {item.icon}
             </div>
           ))}
         </div>

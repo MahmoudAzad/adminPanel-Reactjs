@@ -1,16 +1,39 @@
-html,
-body {
-  padding: 0;
+@use "../styles/variables";
+
+html {
+  //light theme
+  --bg_color: #ffffff;
+  --bg_card: rgb(245, 245, 245);
+  --bg_hover: rgb(225, 225, 225);
+  --text_color: #424750;
+
+  // Font family
+  --fontFamily: "Poppins", "Roboto", sans-serif;
+}
+html[theme="dark"] {
+  //dark theme
+  --bg_color: rgb(29, 35, 39);
+  --bg_card: rgb(50, 49, 49);
+  --bg_hover: rgb(75, 75, 75);
+  --text_color: #ebebeb;
+}
+
+*,
+*::before,
+*::after {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg_color);
+  font-family: var(--fontFamily);
+  color: var(--text_color);
+  overflow-x: hidden;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }

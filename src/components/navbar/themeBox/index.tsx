@@ -1,25 +1,34 @@
 import { useEffect, useState } from "react";
 import Dropdown from "../../ui/dropdown/Dropdown";
 import styles from "./ThemeBox.module.scss";
-import { AiOutlineSun } from "react-icons/ai";
+import { RxMoon, RxSun } from "react-icons/rx";
 
 const ThemeBox = () => {
-  const [selectedItem, setSelectedItem] = useState("Light");
+  const [theme, setTheme] = useState<string>(() => {
+    const storedValue = localStorage.getItem("theme");
+    return storedValue ? JSON.parse(storedValue) : "light";
+  });
+
   const items = [
-    { id: 1, label: "Light", icon: <AiOutlineSun size="20px" /> },
-    { id: 2, label: "Dark", icon: <AiOutlineSun size="20px" /> },
+    { id: 1, label: "light" },
+    { id: 2, label: "dark" },
   ];
 
   useEffect(() => {
-    console.log("selectedTheme =>", selectedItem);
-  }, [selectedItem]);
+    console.log("selectedTheme =>", theme);
+    localStorage.setItem("theme", JSON.stringify(theme));
+    document.documentElement.setAttribute("theme", theme);
+  }, [theme]);
 
   return (
     <Dropdown
       contentItems={items}
-      dropdownBtn={{ icon: <AiOutlineSun size="20px" /> }}
+      dropdownBtn={{
+        icon:
+          theme === "light" ? <RxSun size="20px" /> : <RxMoon size="20px" />,
+      }}
       btnClasses={styles.themeBox_button}
-      setSelectedItem={setSelectedItem}
+      setSelectedItem={setTheme}
     />
   );
 };
