@@ -17,7 +17,7 @@ const ThemeBox = () => {
   return (
     <Dropdown
       contentItems={items}
-      dropdownBtn={<AiOutlineSun size="20px" />}
+      dropdownBtn={{ icon: <AiOutlineSun size="20px" /> }}
       btnClasses={styles.themeBox_button}
       setSelectedItem={setSelectedItem}
     />

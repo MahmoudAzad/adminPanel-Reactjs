@@ -21,7 +21,7 @@ const ProfileBox = () => {
   return (
     <Dropdown
       contentItems={items}
-      dropdownBtn={"M"}
+      dropdownBtn={{ label: "M" }}
       btnClasses={styles.profileBox_button}
       setSelectedItem={setSelectedItem}
     />

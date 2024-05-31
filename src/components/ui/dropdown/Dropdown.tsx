@@ -6,9 +6,13 @@ type TContentItems = {
   label: string;
   icon?: ReactNode;
 };
+type TDropdownBtn = {
+  label?: string;
+  icon?: ReactNode;
+};
 interface Props {
   contentItems: TContentItems[];
-  dropdownBtn: ReactNode;
+  dropdownBtn: TDropdownBtn;
   btnClasses: string;
   contentClasses?: string;
   setSelectedItem?: (label: string) => void;
@@ -44,6 +48,7 @@ const Dropdown: React.FC<Props> = ({
   };
 
   const handleItemClick = (label: string) => {
+    console.log("label => ", label);
     setIsOpen(false);
     if (setSelectedItem) {
       setSelectedItem(label);
@@ -53,7 +58,8 @@ const Dropdown: React.FC<Props> = ({
   return (
     <div className={styles.dropdown_container} ref={dropdownRef}>
       <div className={btnClasses} onClick={toggleDropdown}>
-        {dropdownBtn}
+        {dropdownBtn.label}
+        {dropdownBtn.icon}
       </div>
       {isOpen && (
         <div className={`${styles.dropdown_content} ${contentClasses}`}>
