@@ -15,7 +15,6 @@ const ThemeBox = () => {
   ];
 
   useEffect(() => {
-    console.log("selectedTheme =>", theme);
     localStorage.setItem("theme", JSON.stringify(theme));
     document.documentElement.setAttribute("theme", theme);
   }, [theme]);

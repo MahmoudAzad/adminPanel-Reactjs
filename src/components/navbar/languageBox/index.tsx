@@ -1,22 +1,32 @@
 import { MdLanguage } from "react-icons/md";
 import styles from "./LanguageBox.module.scss";
 import Dropdown from "../../ui/dropdown/Dropdown";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import i18n from "../../../i18n";
+
 const LanguageBox = () => {
-  const [selectedItems, setSelectedItem] = useState("EN");
+  const [language, setLanguage] = useState<string>(() => {
+    const storedValue = localStorage.getItem("lang");
+    return storedValue ? JSON.parse(storedValue) : "en";
+  });
   const items = [
-    { id: 1, label: "EN" },
-    { id: 2, label: "FA" },
+    { id: 1, label: "en" },
+    { id: 2, label: "fa" },
   ];
+  useEffect(() => {
+    localStorage.setItem("lang", JSON.stringify(language));
+    document.documentElement.lang = language === "en" ? "en" : "fa";
+    i18n.changeLanguage(language);
+  }, [language]);
   return (
     <Dropdown
       dropdownBtn={{
-        label: selectedItems,
+        label: language,
         icon: <MdLanguage size="20px" />,
       }}
       contentItems={items}
       btnClasses={styles.languageBox_button}
-      setSelectedItem={setSelectedItem}
+      setSelectedItem={setLanguage}
     />
   );
 };

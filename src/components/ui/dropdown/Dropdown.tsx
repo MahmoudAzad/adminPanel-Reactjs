@@ -48,7 +48,6 @@ const Dropdown: React.FC<Props> = ({
   };
 
   const handleItemClick = (label: string) => {
-    console.log("label => ", label);
     setIsOpen(false);
     if (setSelectedItem) {
       setSelectedItem(label);
