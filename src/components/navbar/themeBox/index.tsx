@@ -1,33 +1,29 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import Dropdown from "../../ui/dropdown/Dropdown";
 import styles from "./ThemeBox.module.scss";
 import { RxMoon, RxSun } from "react-icons/rx";
+import ThemeContext from "../../../context/ThemeContext";
 
 const ThemeBox = () => {
-  const [theme, setTheme] = useState<string>(() => {
-    const storedValue = localStorage.getItem("theme");
-    return storedValue ? JSON.parse(storedValue) : "light";
-  });
-
+  const themeContext = useContext(ThemeContext);
   const items = [
     { id: 1, label: "light" },
     { id: 2, label: "dark" },
   ];
-
-  useEffect(() => {
-    localStorage.setItem("theme", JSON.stringify(theme));
-    document.documentElement.setAttribute("theme", theme);
-  }, [theme]);
 
   return (
     <Dropdown
       contentItems={items}
       dropdownBtn={{
         icon:
-          theme === "light" ? <RxSun size="20px" /> : <RxMoon size="20px" />,
+          themeContext.theme === "light" ? (
+            <RxSun size="20px" />
+          ) : (
+            <RxMoon size="20px" />
+          ),
       }}
       btnClasses={styles.themeBox_button}
-      setSelectedItem={setTheme}
+      setSelectedItem={themeContext.toggleTheme}
     />
   );
 };

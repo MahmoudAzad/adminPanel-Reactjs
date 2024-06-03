@@ -1,23 +1,18 @@
+import { useContext } from "react";
 import { MdLanguage } from "react-icons/md";
 import styles from "./LanguageBox.module.scss";
 import Dropdown from "../../ui/dropdown/Dropdown";
-import { useEffect, useState } from "react";
-import i18n from "../../../i18n";
+import LanguageContext from "../../../context/LanguageContext";
 
 const LanguageBox = () => {
-  const [language, setLanguage] = useState<string>(() => {
-    const storedValue = localStorage.getItem("lang");
-    return storedValue ? JSON.parse(storedValue) : "en";
-  });
+  const LangContext = useContext(LanguageContext);
+  const language = LangContext.language;
+
   const items = [
     { id: 1, label: "en" },
     { id: 2, label: "fa" },
   ];
-  useEffect(() => {
-    localStorage.setItem("lang", JSON.stringify(language));
-    document.documentElement.lang = language === "en" ? "en" : "fa";
-    i18n.changeLanguage(language);
-  }, [language]);
+
   return (
     <Dropdown
       dropdownBtn={{
@@ -26,7 +21,7 @@ const LanguageBox = () => {
       }}
       contentItems={items}
       btnClasses={styles.languageBox_button}
-      setSelectedItem={setLanguage}
+      setSelectedItem={LangContext.toggleLanguage}
     />
   );
 };
